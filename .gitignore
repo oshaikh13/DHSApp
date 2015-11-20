@@ -23,6 +23,9 @@ components/
 tmp
 temp
 dist
+platforms
+plugins
+lib
 
 .idea
 
