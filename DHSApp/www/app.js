@@ -10,7 +10,8 @@ angular.module('dhs',
    'dhs.home',
    'dhs.services',
    'dhs.news',
-   'dhs.status'
+   'dhs.status',
+   'dhs.skyward'
    ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -46,6 +47,15 @@ angular.module('dhs',
     views : {
       'menuContent' : {
         templateUrl: 'news/news.html'
+      }
+    }
+  })
+
+  .state('app.skyward', {
+    url: '/skyward',
+    views : {
+      'menuContent' : {
+        templateUrl: 'skyward/skyward.html'
       }
     }
   })
