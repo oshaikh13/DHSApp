@@ -30,4 +30,15 @@ profit
 ```
 
 Rest of the keys are unknown at this point. The three "no" keys remain the same. So does the false. 
+
+Further requests after auth can be made using the sessionId, which is pretty much the web-data-recid + wfaacl-recid
+
+```
+sessionId = web-data-recid + "" + wfaacl-recid
+
+// Use the session ID for further requests.
+
+```
+
+
 If any employee from skyward is looking at this repo, please PR and clarify. Thanks
