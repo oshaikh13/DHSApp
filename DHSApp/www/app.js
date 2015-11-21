@@ -9,6 +9,8 @@ angular.module('dhs',
    'dhs.menu',
    'dhs.home',
    'dhs.services',
+   'dhs.news',
+   'dhs.status'
    ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -30,6 +32,23 @@ angular.module('dhs',
     }
   })
 
+  .state('app.status', {
+    url: '/status',
+    views : {
+      'menuContent' : {
+        templateUrl: 'status/status.html'
+      }
+    }
+  })
+
+  .state('app.news', {
+    url: '/news',
+    views : {
+      'menuContent' : {
+        templateUrl: 'news/news.html'
+      }
+    }
+  })
 })
 
 .run(function($state) {
