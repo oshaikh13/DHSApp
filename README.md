@@ -23,11 +23,22 @@ Home request now requires various keys.
 5. wfaacl-recid: 9365410
 6. nameid: 6772
 
-Post this data to https://skywarddhs.isg.edu.sa/scripts/wsisa.dll/WService=wsEAPlusDHS/sfhome01.w
-
 profit
 
 ```
 
 Rest of the keys are unknown at this point. The three "no" keys remain the same. So does the false. 
+
+Further requests after auth can be made using the sessionId, which is pretty much the web-data-recid + wfaacl-recid
+
+```
+sessionId = web-data-recid + "" + wfaacl-recid
+
+// Use the session ID for further requests.
+
+```
+
+See an example in SkywardAuth/
+Ensure that cors is disabled in chrome. Use node.js proxy server in production
+
 If any employee from skyward is looking at this repo, please PR and clarify. Thanks
