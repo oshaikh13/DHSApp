@@ -1,7 +1,9 @@
 
 var username = ""; //Skyward username
 var password = ""; //Skyward password
-var qryFirstAuthStr = "codeType=tryLogin&codeValue=" + username +"&duserid=-1&login=" + username + "&loginID=-1&password=" + password + "&requestAction=eel";
+var qryFirstAuthStr = "codeType=tryLogin&codeValue=" + username 
+              + "&duserid=-1&login=" + username + "&loginID=-1&password=" 
+              + password + "&requestAction=eel";
 
 var authParser = function(data) {
   data = data.firstChild.childNodes[0].data;
@@ -33,7 +35,10 @@ var firstAuthRun  = function(qry) {
 
 var secondAuthRun = function(firstAuthData) {
   
-  var qrySecondAuthStr = "duserid=" + firstAuthData.duserid + "&dwd=" + firstAuthData.dwd + "&enc=" + firstAuthData.enc + "&loginID=-1&nameid=" + firstAuthData.nameid +"&recordLimit=30&web-data-recid=" + firstAuthData.web_data_recid + "&wfaacl=" + firstAuthData.wfaacl + "&wfaacl-recid=" + firstAuthData.wfaacl_recid;
+  var qrySecondAuthStr = "duserid=" + firstAuthData.duserid + "&dwd="
+   + firstAuthData.dwd + "&enc=" + firstAuthData.enc + "&loginID=-1&nameid=" 
+   + firstAuthData.nameid +"&recordLimit=30&web-data-recid=" + firstAuthData.web_data_recid 
+   + "&wfaacl=" + firstAuthData.wfaacl + "&wfaacl-recid=" + firstAuthData.wfaacl_recid;
 
   $.ajax({
     url: 'https://skywarddhs.isg.edu.sa/scripts/wsisa.dll/WService=wsEAPlusDHS/sfhome01.w',
