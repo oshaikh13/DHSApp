@@ -6,6 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('dhs', 
   ['ionic',
+   'ngStorage',
    'dhs.menu',
    'dhs.home',
    'dhs.services',
@@ -15,6 +16,7 @@ angular.module('dhs',
    ])
 
 .config(function($stateProvider, $urlRouterProvider) {
+
   $stateProvider
   .state('app', {
     url: '/app',
@@ -51,16 +53,31 @@ angular.module('dhs',
     }
   })
 
+  .state('app.skywardlogin', {
+    url: '/skywardlogin',
+    views: {
+      'menuContent' : {
+        templateUrl: 'skyward/login.html',
+        controller: 'skywardLoginCtrl',
+        hideBackButton: true
+      }
+    }
+  })
+
   .state('app.skyward', {
     url: '/skyward',
     views : {
       'menuContent' : {
-        templateUrl: 'skyward/skyward.html'
+        templateUrl: 'skyward/skyward.html',
+        controller: 'skywardCtrl',
+        hideBackButton: true
       }
     }
   })
+
 })
 
-.run(function($state) {
+.run(function($state, $rootScope) {
+  $rootScope.dhsAppServer = "http://localhost:8000";
   $state.go('app.home');
 });
