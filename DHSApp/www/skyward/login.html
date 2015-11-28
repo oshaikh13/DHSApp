@@ -1,8 +1,17 @@
 <ion-view view-title="Login">
   <ion-content class="padding">
+        <div class="card">
+          <div class="item item-text-wrap">
+              <div class="centered skywardimage">
+                <img src="assets/skywardimage.gif">
+              </div>
+              <div class="votewarning"><strong>Skyward Login</strong></div>
+              <div class="currentTempHeader">Use your given Skyward credentials</div>
+          </div>
+      </div>
       <div class="list list-inset">
           <label class="item item-input">
-              <input type="text" placeholder="Username" ng-model="data.username">
+              <input type="text" placeholder="Username" ng-model="data.username" autocorrect="off" autocapitalize="none">
           </label>
           <label class="item item-input">
               <input type="password" placeholder="Password" ng-model="data.password">

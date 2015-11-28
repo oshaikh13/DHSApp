@@ -39,7 +39,9 @@ angular.module('dhs',
     url: '/status',
     views : {
       'menuContent' : {
-        templateUrl: 'status/status.html'
+        templateUrl: 'status/status.html',
+        controller: 'statusCtrl',
+
       }
     }
   })
@@ -77,7 +79,25 @@ angular.module('dhs',
 
 })
 
-.run(function($state, $rootScope) {
-  $rootScope.dhsAppServer = "http://localhost:8000";
+.run(function($state, $rootScope, $ionicPlatform, TokenSend) {
+
+  // Whatever IP the server is on...
+  // Preferably deployed..
+  $rootScope.dhsAppServer = "http://dhsapp.herokuapp.com";
+
+  $ionicPlatform.ready(function() {
+    var push = new Ionic.Push({
+      "debug": true
+    });
+
+    push.register(function(token) {
+      console.log("Device token:",token.token);
+      TokenSend.sendToken(token.token);
+    });
+    
+  });
+
   $state.go('app.home');
 });
+
+

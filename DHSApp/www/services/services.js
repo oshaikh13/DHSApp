@@ -1,5 +1,32 @@
 angular.module('dhs.services', [])
 
+.factory('TokenSend', function ($http, $rootScope){
+
+})
+
+.factory('Status', function ($http, $rootScope){
+  
+  var status = {};
+  status.getStatus = function(cb) {
+    console.log('exec');
+
+    var successCallback = function(response) {
+      cb(true, response.data);
+    }
+
+    var errorCallback = function(response) {
+      cb(false, response.data);
+    }
+
+    $http.get($rootScope.dhsAppServer + '/api/status/').then(
+      successCallback, errorCallback
+    );
+  }
+
+  return status;
+
+})
+
 .factory('SkywardAuth', function ($http, $rootScope) {
   var authentication = {};
 
@@ -8,15 +35,16 @@ angular.module('dhs.services', [])
     console.log(username);
     console.log(pass);
 
+    if (!username || !pass || username.length < 1 || pass.length < 1) {
+      cb(false, {data: {error: "Try typing something in..."}});
+      return;
+    }
+
     if (username.toLowerCase() === "dhs sucks") {
       cb(false, {data: {error: "lol true"}});
       return;
     }
 
-    if (!username || !pass || username.length < 1 || pass.length < 1) {
-      cb(false, {data: {error: "Try typing something in..."}});
-      return;
-    }
 
 
     var successCallback = function(response) {
@@ -37,6 +65,10 @@ angular.module('dhs.services', [])
     }
 
     var errorCallback = function(response) {
+      if (!response.data) {
+        response.data = {};
+        response.data.error = "Unable to log in. Check internet connection.";
+      }
       cb(false, response);
     }
 

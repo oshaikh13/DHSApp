@@ -1,5 +1,14 @@
 <ion-view view-title="Status">
   <ion-content has-bouncing="true">
-
+        <div class="card">
+            <div class="item item-text-wrap">
+                <div class="votewarning"><strong>School Status</strong></div>
+                <div class="currentTempHeader">Last Updated: {{ lastUpdated }}</div>
+                <div class="currentTempSmall">
+                    {{ currentStatus }}
+                </div>
+                <div class="currentTempHeader">{{ description }}</div>
+            </div>
+        </div>
   </ion-content>
 </ion-view>
