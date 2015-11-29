@@ -1,7 +1,11 @@
 angular.module('dhs.services', [])
 
 .factory('TokenSend', function ($http, $rootScope){
+  var tokenFact = {};
+  tokenFact.sendToken = function (token) {
 
+  }
+  return tokenFact;
 })
 
 .factory('Status', function ($http, $rootScope){

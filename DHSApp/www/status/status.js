@@ -10,7 +10,7 @@ angular.module('dhs.status', [])
       console.log(res);
       $scope.description = res.description;
       $scope.currentStatus = res.status;
-      $scope.lastUpdated = res.lastUpdated;
+      $scope.lastUpdated = moment(res.lastUpdated).format('LL');
     }
   })
 

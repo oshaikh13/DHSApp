@@ -38,7 +38,8 @@ angular.module('dhs.skyward', [])
         $localStorage.loggedIn = true;
 
         $ionicHistory.nextViewOptions({
-          disableBack: true
+          disableBack: true,
+          historyRoot: true
         });
 
         $localStorage.username = $scope.data.username;
@@ -90,8 +91,10 @@ angular.module('dhs.skyward', [])
 
   $scope.logout = function() {
     $localStorage.$reset();
+    
     $ionicHistory.nextViewOptions({
-      disableBack: true
+      disableBack: true,
+      historyRoot: true
     });
 
     $state.go('app.home');
