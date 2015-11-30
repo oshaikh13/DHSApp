@@ -85,6 +85,7 @@ angular.module('dhs.skyward', [])
 
       if (success) {
         $localStorage.userGradeData = response.data;
+        $scope.$apply();
       }
 
       $scope.refreshButtonText = "Refresh";
@@ -109,9 +110,9 @@ angular.module('dhs.skyward', [])
 .controller('skywardGradeViewCtrl', function($stateParams, $localStorage, $scope){
 
   var classId = $stateParams.period;
-  var currentClassCategories = $localStorage.userGradeData[classId - 1].categories;
+  $scope.currentClassCategories = $localStorage.userGradeData[classId - 1].categories;
   $scope.pageTitle = $localStorage.userGradeData[classId - 1].name;
-  console.log(currentClassCategories);
+  console.log($scope.currentClassCategories);
 
 })
 

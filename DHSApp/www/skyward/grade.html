@@ -1,15 +1,13 @@
 <ion-view view-title="{{pageTitle}}">
   <ion-content has-bouncing="true">
-      <div class="card">
+      <div class="card" ng-repeat="(key, value) in currentClassCategories">
         <div class="item item-text-wrap">
-            <div class="votewarning" style="margin-bottom: 3%"><strong>Category Name</strong></div>
-            <table>
-                <tr>
-                    <td>Name</td>
-                    <td>Grade</td>
-                    <td>Date</td>
-                </tr>
-            </table>
+            <div class="votewarning" style="margin-bottom: 3%"><strong>{{key}}</strong></div>
+            <div class="row" ng-repeat="grade in value">
+              <div class="col col-50">{{grade.name}}</div>
+              <div class="col">{{grade.grade[0]}}/{{grade.grade[1]}}</div>
+              <div class="col">{{grade.date}}</div>
+            </div>
         </div>
     </div>
   </ion-content>
