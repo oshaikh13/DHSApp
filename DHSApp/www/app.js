@@ -57,6 +57,7 @@ angular.module('dhs',
 
   .state('app.skywardGradeView', {
     url: '/skywardgrade/:period',
+    cache: false,
     views : {
       'menuContent' : {
         templateUrl: 'skyward/grade.html',
@@ -78,6 +79,7 @@ angular.module('dhs',
 
   .state('app.skyward', {
     url: '/skyward',
+    cache: false,
     views : {
       'menuContent' : {
         templateUrl: 'skyward/skyward.html',
@@ -94,7 +96,7 @@ angular.module('dhs',
   // Whatever IP the server is on...
   // Preferably deployed..
 
-  $rootScope.dhsAppServer = "http://192.168.1.15:8000";
+  $rootScope.dhsAppServer = "http://dhsapp.herokuapp.com";
 
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
