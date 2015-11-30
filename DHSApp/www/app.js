@@ -55,6 +55,16 @@ angular.module('dhs',
     }
   })
 
+  .state('app.skywardGradeView', {
+    url: '/skywardgrade/:period',
+    views : {
+      'menuContent' : {
+        templateUrl: 'skyward/grade.html',
+        controller: 'skywardGradeViewCtrl'
+      }
+    }
+  })
+
   .state('app.skywardlogin', {
     url: '/skywardlogin',
     views: {
@@ -79,11 +89,12 @@ angular.module('dhs',
 
 })
 
-.run(function($state, $rootScope, $ionicPlatform, TokenSend) {
+.run(function($state, $rootScope, $ionicPlatform, TokenSend, $localStorage) {
 
   // Whatever IP the server is on...
   // Preferably deployed..
-  $rootScope.dhsAppServer = "http://dhsapp.herokuapp.com";
+
+  $rootScope.dhsAppServer = "http://192.168.1.15:8000";
 
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
@@ -92,7 +103,15 @@ angular.module('dhs',
 
     push.register(function(token) {
       console.log("Device token:",token.token);
-      TokenSend.sendToken(token.token);
+
+      if ($localStorage.firstLoad && ($localStorage.currentToken !== token.token)) {
+        TokenSend.sendToken(token.token, $localStorage.currentToken);
+      } else if (!$localStorage.firstLoad) {
+        TokenSend.sendToken(token.token);
+        $localStorage.currentToken = token.token;
+        $localStorage.firstLoad = true;
+      } 
+
     });
     
   });

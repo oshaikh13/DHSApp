@@ -102,6 +102,13 @@ angular.module('dhs.skyward', [])
 
 })
 
+.controller('skywardGradeViewCtrl', function($stateParams){
+
+  var classId = $stateParams.period;
+  var currentClassCategories = $localStorage.userGradeData[classId - 1].categories;
+
+})
+
 
 
 

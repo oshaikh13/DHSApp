@@ -1,11 +1,31 @@
 angular.module('dhs.services', [])
 
 .factory('TokenSend', function ($http, $rootScope){
+
   var tokenFact = {};
-  tokenFact.sendToken = function (token) {
+
+  var successCallback = function(){
+    
+  }
+
+  var errorCallback = function(){
 
   }
+
+  tokenFact.sendToken = function (token, oldToken) {
+    var reqData = {
+      token: token,
+      oldToken: oldToken,
+      date: Date.now()
+    }
+
+    $http.post($rootScope.dhsAppServer + '/api/push/register/', reqData, 
+      successCallback, errorCallback);
+
+  }
+
   return tokenFact;
+
 })
 
 .factory('Status', function ($http, $rootScope){
